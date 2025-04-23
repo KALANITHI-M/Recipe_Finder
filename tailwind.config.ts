@@ -52,6 +52,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        // Indian cuisine inspired colors
+        spice: {
+          saffron: '#FF9933', // Saffron color from Indian flag
+          turmeric: '#FFC107', // Turmeric yellow
+          masala: '#8D4004', // Rich masala brown
+          chili: '#D32F2F', // Bright chili red
+          mint: '#4CAF50', // Fresh mint green
+          cardamom: '#7B5E57', // Cardamom brown
+        },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
