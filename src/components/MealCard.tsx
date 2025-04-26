@@ -10,6 +10,15 @@ interface MealCardProps {
 }
 
 const MealCard = ({ meal }: MealCardProps) => {
+  // Color palette for ingredients
+  const ingredientColors = [
+    'bg-[#F2FCE2]', // Soft Green
+    'bg-[#FEF7CD]', // Soft Yellow
+    'bg-[#FEC6A1]', // Soft Orange
+    'bg-[#D3E4FD]', // Soft Blue
+    'bg-[#E5DEFF]', // Soft Purple
+  ];
+
   return (
     <Card className="overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
       <div className="aspect-video overflow-hidden">
@@ -35,12 +44,16 @@ const MealCard = ({ meal }: MealCardProps) => {
           <p className="text-sm font-medium mb-1">Ingredients:</p>
           <div className="flex flex-wrap gap-1">
             {meal.ingredients.slice(0, 5).map((ingredient, idx) => (
-              <Badge key={idx} variant="secondary" className="bg-muted text-accent-foreground">
+              <Badge 
+                key={idx} 
+                variant="secondary" 
+                className={`${ingredientColors[idx % ingredientColors.length]} text-gray-700 font-medium`}
+              >
                 {ingredient}
               </Badge>
             ))}
             {meal.ingredients.length > 5 && (
-              <Badge variant="secondary" className="bg-muted text-accent-foreground">
+              <Badge variant="secondary" className="bg-[#F1F0FB] text-gray-700 font-medium">
                 +{meal.ingredients.length - 5} more
               </Badge>
             )}
