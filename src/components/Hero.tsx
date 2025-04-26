@@ -1,5 +1,13 @@
-
 import { Button } from "./ui/button";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
+import { Process } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -16,11 +24,32 @@ const Hero = () => {
           <Button className="bg-white text-spice-chili hover:bg-white/90" size="lg">
             Explore Recipes
           </Button>
-          <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10" size="lg">
-            How It Works
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="bg-transparent border-white text-white hover:bg-white/10" 
+                size="lg"
+              >
+                <Process className="mr-2" />
+                How It Works
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="bg-white">
+              <AlertDialogHeader>
+                <AlertDialogTitle>How to Use Indian AI Kitchen Delights</AlertDialogTitle>
+                <AlertDialogDescription className="space-y-2">
+                  <p>1. Enter Ingredients: Type in the ingredients you have at home in the search bar.</p>
+                  <p>2. Search Recipes: Click search to find Indian recipes that match your ingredients.</p>
+                  <p>3. Random Recipe: Click the random button to discover a surprise Indian dish.</p>
+                  <p>4. View Details: Click on any recipe card to see the full recipe and instructions.</p>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
+
       
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-20">
         <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=640')] bg-cover bg-center"></div>
