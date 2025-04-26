@@ -2,6 +2,8 @@
 import { MealType } from '../types';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 import { Badge } from './ui/badge';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { Separator } from './ui/separator';
 
 interface MealCardProps {
   meal: MealType;
@@ -52,9 +54,55 @@ const MealCard = ({ meal }: MealCardProps) => {
       </CardContent>
       
       <CardFooter className="pt-2">
-        <button className="text-sm font-medium text-primary hover:underline">
-          View Full Recipe
-        </button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="text-sm font-medium text-primary hover:underline">
+              View Full Recipe
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <div className="flex justify-between items-start">
+                <DialogTitle className="text-2xl font-bold">{meal.name}</DialogTitle>
+                <Badge variant="outline" className="bg-spice-saffron/10 text-spice-masala">
+                  {meal.region}
+                </Badge>
+              </div>
+              <DialogDescription className="text-base">
+                Preparation time: {meal.prepTime}
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="my-4">
+              <img 
+                src={meal.image} 
+                alt={meal.name} 
+                className="w-full h-64 object-cover rounded-md"
+              />
+            </div>
+
+            <div className="my-6">
+              <h4 className="font-semibold text-lg mb-2">Ingredients</h4>
+              <ul className="grid grid-cols-2 gap-2">
+                {meal.ingredients.map((ingredient, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-primary"></span>
+                    <span className="capitalize">{ingredient}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <Separator />
+            
+            <div className="my-6">
+              <h4 className="font-semibold text-lg mb-2">Preparation</h4>
+              <div className="space-y-2 whitespace-pre-line text-muted-foreground">
+                {meal.recipe}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </CardFooter>
     </Card>
   );
