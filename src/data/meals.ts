@@ -5,8 +5,8 @@ export const meals: MealType[] = [
   {
     id: '1',
     name: 'Butter Chicken',
-    ingredients: ['chicken', 'butter', 'cream', 'tomato', 'garam masala', 'ginger', 'garlic', 'onion'],
-    recipe: 'Marinate chicken with yogurt and spices. Cook in a tandoor or oven. Prepare a sauce with butter, tomatoes, and cream. Combine and simmer.',
+    ingredients: ['chicken', 'butter', 'cream', 'tomato', 'garam masala', 'ginger', 'garlic', 'onion', 'kasuri methi', 'yogurt', 'turmeric'],
+    recipe: '1. Marinate chicken with yogurt, turmeric, and garam masala for 2 hours.\n2. In a pan, sauté onions until golden brown.\n3. Add ginger-garlic paste and cook for 2 minutes.\n4. Add tomato puree and cook until oil separates.\n5. Add marinated chicken and cook for 15 minutes.\n6. Add butter and cream, simmer for 10 minutes.\n7. Finish with kasuri methi and serve hot with naan.',
     image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=640',
     prepTime: '40 minutes',
     region: 'North India'
@@ -14,8 +14,8 @@ export const meals: MealType[] = [
   {
     id: '2',
     name: 'Palak Paneer',
-    ingredients: ['paneer', 'spinach', 'onion', 'tomato', 'ginger', 'garlic', 'garam masala', 'cream'],
-    recipe: 'Blanch spinach and blend to a puree. Saute onions, ginger, garlic, and spices. Add spinach puree and cook. Add pan-fried paneer cubes.',
+    ingredients: ['paneer', 'spinach', 'onion', 'tomato', 'ginger', 'garlic', 'garam masala', 'cream', 'cumin seeds', 'turmeric'],
+    recipe: '1. Blanch spinach for 2 minutes, then blend into a smooth puree.\n2. Heat oil, add cumin seeds until they crackle.\n3. Sauté onions until translucent, add ginger-garlic paste.\n4. Add tomatoes and cook until soft.\n5. Add spices: garam masala, turmeric, salt.\n6. Mix in spinach puree and simmer for 10 minutes.\n7. Add pan-fried paneer cubes and cream.\n8. Cook for 5 more minutes and serve hot.',
     image: 'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?q=80&w=640',
     prepTime: '30 minutes',
     region: 'North India'
@@ -23,8 +23,8 @@ export const meals: MealType[] = [
   {
     id: '3',
     name: 'Chicken Biryani',
-    ingredients: ['basmati rice', 'chicken', 'onion', 'tomato', 'yogurt', 'ginger', 'garlic', 'biryani masala', 'saffron', 'mint'],
-    recipe: 'Marinate chicken with yogurt and spices. Partially cook rice. Layer chicken and rice, dum cook until done. Garnish with fried onions, mint.',
+    ingredients: ['basmati rice', 'chicken', 'onion', 'tomato', 'yogurt', 'ginger', 'garlic', 'biryani masala', 'saffron', 'mint', 'ghee'],
+    recipe: '1. Soak saffron in warm milk.\n2. Marinate chicken with yogurt, ginger-garlic paste, and biryani masala for 2 hours.\n3. Cook basmati rice with whole spices until 70% done.\n4. In a heavy bottom pot, layer: marinated chicken, partially cooked rice.\n5. Add fried onions, mint leaves, and saffron milk.\n6. Seal pot with dough and cook on low heat for 25 minutes.\n7. Let it rest for 10 minutes before opening.\n8. Gently mix and serve hot with raita.',
     image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=640',
     prepTime: '60 minutes',
     region: 'Hyderabad'
