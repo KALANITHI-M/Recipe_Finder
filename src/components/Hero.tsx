@@ -1,4 +1,6 @@
+
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -10,6 +12,8 @@ import {
 import { HelpCircle } from "lucide-react";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative bg-gradient-to-r from-spice-masala to-spice-chili text-white py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto relative z-10 flex flex-col items-center text-center px-4">
@@ -21,7 +25,11 @@ const Hero = () => {
           Explore the rich flavors and aromas of authentic Indian cooking.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Button className="bg-white text-spice-chili hover:bg-white/90" size="lg">
+          <Button 
+            className="bg-white text-spice-chili hover:bg-white/90" 
+            size="lg"
+            onClick={() => navigate('/recipes')}
+          >
             Explore Recipes
           </Button>
           <AlertDialog>
