@@ -7,7 +7,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { Process } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -31,7 +31,7 @@ const Hero = () => {
                 className="bg-transparent border-white text-white hover:bg-white/10" 
                 size="lg"
               >
-                <Process className="mr-2" />
+                <HelpCircle className="mr-2" />
                 How It Works
               </Button>
             </AlertDialogTrigger>
