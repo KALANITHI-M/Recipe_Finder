@@ -10,7 +10,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string, name?: string) => Promise<boolean>;
   signup: (name: string, email: string, password: string) => Promise<boolean>;
   logout: () => void;
 }
@@ -21,22 +21,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   // In a real application, these functions would call your API
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, password: string, name?: string): Promise<boolean> => {
     try {
       // This would be replaced with actual API call to verify credentials
-      console.log('Login attempt with:', { email, password });
+      console.log('Login attempt with:', { email, password, name });
+      
+      // Use provided name if available, otherwise extract from email
+      const userName = name || email.split('@')[0];
       
       // Mock successful login
       setUser({
         id: '1',
-        name: email.split('@')[0], // Extract name from email as a placeholder
+        name: userName, 
         email,
       });
       
       // Store in localStorage to persist login across page refreshes
       localStorage.setItem('user', JSON.stringify({
         id: '1',
-        name: email.split('@')[0],
+        name: userName,
         email,
       }));
       

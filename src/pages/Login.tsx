@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 
 const loginSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Invalid email address" }),
   password: z.string().min(6, { message: "Password must be at least 6 characters" }),
 });
@@ -32,18 +33,19 @@ const Login = () => {
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
   });
 
   const onSubmit = async (values: LoginFormValues) => {
-    const success = await login(values.email, values.password);
+    const success = await login(values.email, values.password, values.name);
     
     if (success) {
       toast({
         title: "Login successful",
-        description: "Welcome back!",
+        description: `Welcome back, ${values.name}!`,
       });
       navigate("/");
     } else {
@@ -75,6 +77,20 @@ const Login = () => {
         
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-6">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
             <FormField
               control={form.control}
               name="email"

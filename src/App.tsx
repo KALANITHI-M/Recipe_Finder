@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import RecipesPage from "./pages/Recipes";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AboutUs from "./pages/AboutUs";
 import { AuthProvider } from "./contexts/AuthContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
