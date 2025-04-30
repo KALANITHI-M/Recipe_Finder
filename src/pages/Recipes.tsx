@@ -4,28 +4,60 @@ import SearchBar from '../components/SearchBar';
 import MealGrid from '../components/MealGrid';
 import { meals } from '../data/meals';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '../components/ui/pagination';
+import { MealType } from '../types';
 
 const RecipesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [filteredMeals, setFilteredMeals] = useState<MealType[]>(meals);
+  const [searchIngredients, setSearchIngredients] = useState<string[]>([]);
   const recipesPerPage = 12;
-  const totalPages = Math.ceil(meals.length / recipesPerPage);
+  const totalPages = Math.ceil(filteredMeals.length / recipesPerPage);
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = meals.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const currentRecipes = filteredMeals.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSearch = (ingredients: string[]) => {
+    if (ingredients.length === 0) {
+      setFilteredMeals(meals);
+      setSearchIngredients([]);
+      return;
+    }
+
+    // Filter for recipes that contain ALL of the specified ingredients
+    const filtered = meals.filter(meal => 
+      ingredients.every(ingredient => 
+        meal.ingredients.some(mealIngredient => 
+          mealIngredient.toLowerCase().includes(ingredient.toLowerCase())
+        )
+      )
+    );
+
+    setFilteredMeals(filtered);
+    setSearchIngredients(ingredients);
+    setCurrentPage(1); // Reset to first page when searching
+  };
+
+  const handleRandomMeal = () => {
+    const randomIndex = Math.floor(Math.random() * meals.length);
+    const randomMeal = meals[randomIndex];
+    setFilteredMeals([randomMeal]);
+    setSearchIngredients([]);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-8">Explore Indian Recipes</h1>
-        <SearchBar onSearch={() => {}} onRandom={() => {}} />
+        <SearchBar onSearch={handleSearch} onRandom={handleRandomMeal} />
         
-        <MealGrid meals={currentRecipes} />
+        <MealGrid meals={currentRecipes} searchTerm={searchIngredients} />
         
         {totalPages > 1 && (
           <Pagination className="mt-8">
