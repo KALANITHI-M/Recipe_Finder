@@ -1,10 +1,8 @@
 
 import { useState } from 'react';
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import SearchBar from '../components/SearchBar';
 import MealGrid from '../components/MealGrid';
-import Footer from '../components/Footer';
 import { meals } from '../data/meals';
 import { MealType } from '../types';
 
@@ -43,7 +41,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       {!hasSearched && <Hero />}
       
       <div className="container mx-auto px-4 py-8">
@@ -51,7 +48,6 @@ const Index = () => {
         {hasSearched && <MealGrid meals={filteredMeals} searchTerm={searchIngredients} />}
         {!hasSearched && <MealGrid meals={meals.slice(0, 6)} />}
       </div>
-      <Footer />
     </div>
   );
 };
