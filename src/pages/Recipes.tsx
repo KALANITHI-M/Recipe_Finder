@@ -29,11 +29,12 @@ const RecipesPage = () => {
       return;
     }
 
-    // Filter for recipes that contain ALL of the specified ingredients
+    // Filter for recipes that contain EXACTLY ALL of the specified ingredients
+    // This will only return recipes that have all the ingredients specified, not partial matches
     const filtered = meals.filter(meal => 
-      ingredients.every(ingredient => 
+      ingredients.every(searchIngredient => 
         meal.ingredients.some(mealIngredient => 
-          mealIngredient.toLowerCase().includes(ingredient.toLowerCase())
+          mealIngredient.toLowerCase() === searchIngredient.toLowerCase()
         )
       )
     );
