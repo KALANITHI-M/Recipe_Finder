@@ -19,8 +19,8 @@ const Header = () => {
         
         <div className="hidden md:flex items-center space-x-4">
           {isAuthenticated && (
-            <span className="font-medium mr-2 bg-gradient-to-r from-white to-spice-turmeric bg-clip-text text-transparent animate-pulse font-bold px-2 py-1 rounded-md shadow-[0_0_10px_rgba(255,255,255,0.7)]">
-              Hi, {user?.name}
+            <span className="font-bold px-3 py-1 bg-spice-saffron/30 rounded-md border border-white/20 text-white shadow-lg">
+              Hi, {user?.name} ✨
             </span>
           )}
           
@@ -57,7 +57,7 @@ const Header = () => {
         
         <div className="md:hidden flex items-center space-x-2">
           {isAuthenticated && (
-            <span className="font-medium mr-2 text-sm bg-gradient-to-r from-white to-spice-turmeric bg-clip-text text-transparent animate-pulse font-bold px-1">
+            <span className="font-bold text-sm px-2 py-1 bg-spice-saffron/30 rounded-md border border-white/20">
               Hi, {user?.name}
             </span>
           )}
